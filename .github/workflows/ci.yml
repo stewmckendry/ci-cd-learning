@@ -20,3 +20,9 @@ jobs:
 
             - name: "run pytest"
               run: python -m pytest tests/test_calculator.py -vs
+    deploy:
+        needs: test  # This makes deploy wait for test to pass
+        runs-on: ubuntu-latest
+        steps:
+            - name: "simulate deploy"
+              run: echo "Deployment successful!"
