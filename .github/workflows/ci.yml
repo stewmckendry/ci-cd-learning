@@ -21,8 +21,14 @@ jobs:
             - name: "run pytest"
               run: python -m pytest tests/test_calculator.py -vs
     deploy:
-        needs: test  # This makes deploy wait for test to pass
+        needs: test  
         runs-on: ubuntu-latest
         steps:
-            - name: "simulate deploy"
-              run: echo "Deployment successful!"
+            - name: "check out code" 
+              uses: actions/checkout@v3
+
+            - name: "publish to GitHub Pages"
+              uses: peaceiris/actions-gh-pages@v3
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                publish_dir: ./docs
