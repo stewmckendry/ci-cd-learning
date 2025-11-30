@@ -15,5 +15,8 @@ jobs:
             - name: "install dependencies"
               run: pip install -r requirements.txt
 
+            - name: "install package"
+              run: pip install -e .
+
             - name: "run pytest"
               run: python -m pytest tests/test_calculator.py -vs
