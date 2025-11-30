@@ -16,4 +16,4 @@ jobs:
               run: pip install -r requirements.txt
 
             - name: "run pytest"
-              run: python -m pytest tests/test_calculatory.py -vs
+              run: python -m pytest tests/test_calculator.py -vs
