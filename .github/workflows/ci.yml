@@ -35,6 +35,14 @@ jobs:
             - name: "check out code" 
               uses: actions/checkout@v3
 
+            - name: "download test report"
+              uses: actions/download-artifact@v4
+              with:
+                name: "test results"
+
+            - name: "copy test report to docs"
+              run: cp test-report.html docs/
+
             - name: "publish to GitHub Pages"
               uses: peaceiris/actions-gh-pages@v3
               with:
