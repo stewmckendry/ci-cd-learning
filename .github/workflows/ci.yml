@@ -30,6 +30,9 @@ jobs:
               with:
                 name: "test results"
                 path: ./test-report.html
+
+            - name: "display secret message"
+              run: echo "The secret is ${{ secrets.MY_SECRET_MESSAGE }}"
     deploy:
         needs: test  
         runs-on: ubuntu-latest
