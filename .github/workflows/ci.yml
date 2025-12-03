@@ -2,6 +2,8 @@ name: "Run Calculator Tests"
 on: push
 permissions:
   contents: write
+  pages: write
+  id-token: write
 jobs:
     test:
         runs-on: ubuntu-latest
@@ -43,8 +45,10 @@ jobs:
             - name: "copy test report to docs"
               run: cp test-report.html docs/
 
-            - name: "publish to GitHub Pages"
-              uses: peaceiris/actions-gh-pages@v3
+            - name: "upload docs as an artifact"
+              uses: actions/upload-pages-artifact@v3
               with:
-                github_token: ${{ secrets.GITHUB_TOKEN }}
-                publish_dir: ./docs
+                path: ./docs
+
+            - name: "publish to GitHub Pages"
+              uses: actions/deploy-pages@v4
